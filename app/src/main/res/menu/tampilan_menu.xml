@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--    Cara membuat menu-->
+    <item
+        android:id="@+id/menu_card"
+        android:title="Tampilan Card"/>
+
+    <item
+        android:id="@+id/menu_grid"
+        android:title="Tampilan Menu"/>
+</menu>
