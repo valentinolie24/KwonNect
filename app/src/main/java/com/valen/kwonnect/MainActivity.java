@@ -47,14 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menu_card:
-                tampilDataCard();
-                break;
-
-            case R.id.menu_grid:
-                tampilDataGrid();
-                break;
+        if (item.getItemId() == R.id.menu_card) {
+            tampilDataCard();
+        } else if (item.getItemId() == R.id.menu_grid) {
+            tampilDataGrid();
         }
         return super.onOptionsItemSelected(item);
     }
