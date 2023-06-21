@@ -6,26 +6,44 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.valen.kwonnect.databinding.ActivityMainBinding;
+import com.valen.kwonnect.databinding.ActivityTambahAnggotaBinding;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rvAnggota;
     private ArrayList<AnggotaModel> data = new ArrayList<>();
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         rvAnggota = findViewById(R.id.rv_anggota);
         rvAnggota.setHasFixedSize(true);
         data.addAll(DataAnggota.ambilDataAnggota());
         tampilDataCard();
+        binding.fabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TambahAnggota.class);
+                startActivity(intent);
+            }
+        });
     }
+
+
 
     private void tampilDataCard(){
         rvAnggota.setLayoutManager(new LinearLayoutManager(this));
