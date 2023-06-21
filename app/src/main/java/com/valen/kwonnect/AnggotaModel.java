@@ -5,6 +5,7 @@ public class AnggotaModel {
     private String nama;
     private String npm;
     private String prodi;
+    private String sabuk;
     private String foto;
     private String tempat;
     private String tanggal;
@@ -42,6 +43,14 @@ public class AnggotaModel {
 
     public void setProdi(String prodi) {
         this.prodi = prodi;
+    }
+
+    public String getSabuk() {
+        return sabuk;
+    }
+
+    public void setSabuk(String sabuk) {
+        this.sabuk = sabuk;
     }
 
     public String getFoto() {

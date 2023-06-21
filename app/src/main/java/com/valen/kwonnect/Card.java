@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class Card extends RecyclerView.Adapter<Card.ClassViewHolder>{
+public class Card extends RecyclerView.Adapter<Card.ClassViewHolder> {
     private ArrayList<AnggotaModel> dataAnggota;
     private Context ctx;
 
@@ -27,24 +27,19 @@ public class Card extends RecyclerView.Adapter<Card.ClassViewHolder>{
     @NonNull
     @Override
     public ClassViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View varView = LayoutInflater.from(ctx).inflate(R.layout.list_anggota, parent, false);
-        return new ClassViewHolder(varView);
+        View itemView = LayoutInflater.from(ctx).inflate(R.layout.list_anggota, parent, false);
+        return new ClassViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ClassViewHolder holder, int position) {
         AnggotaModel anggota = dataAnggota.get(position);
-        holder.tvEmail.setText(anggota.getEmail());
         holder.tvNama.setText(anggota.getNama());
         holder.tvNpm.setText(anggota.getNpm());
         holder.tvProdi.setText(anggota.getProdi());
-        holder.tvTempatLahir.setText(anggota.getTempat());
-        holder.tvTanggalLahir.setText(anggota.getTanggal());
-        holder.tvTinggiBadan.setText(anggota.getTinggi());
-        holder.tvBeratBadan.setText(anggota.getBerat());
-        holder.tvNoWa.setText(anggota.getBerat());
-        Glide
-                .with(ctx)
+        holder.tvSabuk.setText(anggota.getSabuk());
+
+        Glide.with(ctx)
                 .load(anggota.getFoto())
                 .centerCrop()
                 .into(holder.ivFoto);
@@ -52,18 +47,17 @@ public class Card extends RecyclerView.Adapter<Card.ClassViewHolder>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String xFoto, xEmail, xNama, xNpm, xProdi, xTempat, xTanggal, xTinggi, xBerat, xNoWa;
-
-                xFoto = anggota.getFoto();
-                xEmail = anggota.getEmail();
-                xNama = anggota.getNama();
-                xNpm = anggota.getNpm();
-                xProdi = anggota.getProdi();
-                xTempat = anggota.getTempat();
-                xTanggal = anggota.getTanggal();
-                xTinggi = anggota.getTinggi();
-                xBerat = anggota.getBerat();
-                xNoWa = anggota.getNowa();
+                String xFoto = anggota.getFoto();
+                String xEmail = anggota.getEmail();
+                String xNama = anggota.getNama();
+                String xNpm = anggota.getNpm();
+                String xProdi = anggota.getProdi();
+                String xSabuk = anggota.getSabuk();
+                String xTempat = anggota.getTempat();
+                String xTanggal = anggota.getTanggal();
+                String xTinggi = anggota.getTinggi();
+                String xBerat = anggota.getBerat();
+                String xNoWa = anggota.getNowa();
 
                 Intent kirim = new Intent(ctx, Detail.class);
                 kirim.putExtra("xFoto", xFoto);
@@ -71,6 +65,7 @@ public class Card extends RecyclerView.Adapter<Card.ClassViewHolder>{
                 kirim.putExtra("xNama", xNama);
                 kirim.putExtra("xNpm", xNpm);
                 kirim.putExtra("xProdi", xProdi);
+                kirim.putExtra("xSabuk", xSabuk);
                 kirim.putExtra("xTempat", xTempat);
                 kirim.putExtra("xTanggal", xTanggal);
                 kirim.putExtra("xTinggi", xTinggi);
@@ -88,7 +83,7 @@ public class Card extends RecyclerView.Adapter<Card.ClassViewHolder>{
     }
 
     public class ClassViewHolder extends RecyclerView.ViewHolder {
-        TextView tvEmail, tvNama, tvNpm, tvProdi, tvTempatLahir, tvTanggalLahir, tvTinggiBadan, tvBeratBadan, tvNoWa;
+        TextView tvEmail, tvNama, tvNpm, tvProdi, tvSabuk, tvTempatLahir, tvTanggalLahir, tvTinggiBadan, tvBeratBadan, tvNoWa;
         ImageView ivFoto;
 
         public ClassViewHolder(@NonNull View itemView) {
@@ -98,6 +93,7 @@ public class Card extends RecyclerView.Adapter<Card.ClassViewHolder>{
             tvNama = itemView.findViewById(R.id.tv_nama);
             tvNpm = itemView.findViewById(R.id.tv_npm);
             tvProdi = itemView.findViewById(R.id.tv_prodi);
+            tvSabuk = itemView.findViewById(R.id.tv_sabuk);
             tvTempatLahir = itemView.findViewById(R.id.tv_tempatLahir);
             tvTanggalLahir = itemView.findViewById(R.id.tv_tanggalLahir);
             tvTinggiBadan = itemView.findViewById(R.id.tv_tinggiBadan);

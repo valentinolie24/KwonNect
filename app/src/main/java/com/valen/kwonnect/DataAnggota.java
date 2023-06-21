@@ -9,6 +9,7 @@ public class DataAnggota {
                         "Admad Dahlan",
                         "2024240061",
                         "Sistem Informasi",
+                        "Kuning",
                         "Palembang",
                         "22 Maret 2000",
                         "175 CM",
@@ -19,6 +20,7 @@ public class DataAnggota {
                         "Admad Dahlan",
                         "2024240061",
                         "Sistem Informasi",
+                        "Hitam",
                         "Palembang",
                         "22 Maret 2000",
                         "175 CM",
@@ -29,6 +31,7 @@ public class DataAnggota {
                         "Admad Dahlan",
                         "2024240061",
                         "Sistem Informasi",
+                        "Hijau",
                         "Palembang",
                         "22 Maret 2000",
                         "175 CM",
@@ -39,6 +42,7 @@ public class DataAnggota {
                         "Admad Dahlan",
                         "2024240061",
                         "Sistem Informasi",
+                        "Biru",
                         "Palembang",
                         "22 Maret 2000",
                         "175 CM",
@@ -46,7 +50,7 @@ public class DataAnggota {
                         "0895632272075"},
         };
 
-        public static ArrayList<AnggotaModel> ambilDataPahlawan(){
+        public static ArrayList<AnggotaModel> ambilDataAnggota(){
             ArrayList<AnggotaModel> dataAnggota = new ArrayList<>();
             for (String[] varData : data){
                 AnggotaModel model = new AnggotaModel();
@@ -55,11 +59,12 @@ public class DataAnggota {
                 model.setNama(varData[2]);
                 model.setNpm(varData[3]);
                 model.setProdi(varData[4]);
-                model.setTempat(varData[5]);
-                model.setTanggal(varData[6]);
-                model.setTinggi(varData[7]);
-                model.setBerat(varData[8]);
-                model.setNowa(varData[9]);
+                model.setSabuk(varData[5]);
+                model.setTempat(varData[6]);
+                model.setTanggal(varData[7]);
+                model.setTinggi(varData[8]);
+                model.setBerat(varData[9]);
+                model.setNowa(varData[10]);
 
                 dataAnggota.add(model);
             }

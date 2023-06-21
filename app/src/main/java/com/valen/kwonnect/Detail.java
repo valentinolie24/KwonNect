@@ -12,8 +12,8 @@ import com.bumptech.glide.Glide;
 public class Detail extends AppCompatActivity {
 
     private ImageView ivFoto;
-    private TextView tvEmail, tvNama, tvNpm, tvProdi, tvTempatLahir, tvTanggalLahir, tvTinggiBadan, tvBeratBadan, tvNoWa;
-    private String yFoto, yEmail, yNama, yNpm, yProdi, yTempat, yTanggal, yTinggi, yBerat, yNoWa;
+    private TextView tvEmail, tvNama, tvNpm, tvProdi, tvSabuk, tvTempatLahir, tvTanggalLahir, tvTinggiBadan, tvBeratBadan, tvNoWa;
+    private String yFoto, yEmail, yNama, yNpm, yProdi, ySabuk, yTempat, yTanggal, yTinggi, yBerat, yNoWa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class Detail extends AppCompatActivity {
         tvNama = findViewById(R.id.tv_nama);
         tvNpm = findViewById(R.id.tv_npm);
         tvProdi = findViewById(R.id.tv_prodi);
+        tvSabuk = findViewById(R.id.tv_sabuk);
         tvTempatLahir = findViewById(R.id.tv_tempatLahir);
         tvTanggalLahir = findViewById(R.id.tv_tanggalLahir);
         tvTinggiBadan = findViewById(R.id.tv_tinggiBadan);
@@ -38,6 +39,7 @@ public class Detail extends AppCompatActivity {
         yNama = terima.getStringExtra("xNama");
         yNpm = terima.getStringExtra("xNpm");
         yProdi = terima.getStringExtra("xProdi");
+        ySabuk = terima.getStringExtra("xSabuk");
         yTempat = terima.getStringExtra("xTempat");
         yTanggal = terima.getStringExtra("xTanggal");
         yTinggi = terima.getStringExtra("xTinggi");
@@ -48,6 +50,7 @@ public class Detail extends AppCompatActivity {
         tvNama.setText(yNama);
         tvNpm.setText(yNpm);
         tvProdi.setText(yProdi);
+        tvSabuk.setText(ySabuk);
         tvTempatLahir.setText(yTempat);
         tvTanggalLahir.setText(yTanggal);
         tvTinggiBadan.setText(yTinggi);

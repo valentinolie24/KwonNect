@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         rvAnggota = findViewById(R.id.rv_anggota);
         rvAnggota.setHasFixedSize(true);
-        data.addAll(DataAnggota.ambilDataPahlawan());
+        data.addAll(DataAnggota.ambilDataAnggota());
         tampilDataCard();
     }
 

@@ -41,13 +41,14 @@ public class Grid extends RecyclerView.Adapter<Grid.ClassViewHolder>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String xFoto, xEmail, xNama, xNpm, xProdi, xTempat, xTanggal, xTinggi, xBerat, xNoWa;
+                String xFoto, xEmail, xNama, xNpm, xProdi, xSabuk, xTempat, xTanggal, xTinggi, xBerat, xNoWa;
 
                 xFoto = anggota.getFoto();
                 xEmail = anggota.getEmail();
                 xNama = anggota.getNama();
                 xNpm = anggota.getNpm();
                 xProdi = anggota.getProdi();
+                xSabuk = anggota.getSabuk();
                 xTempat = anggota.getTempat();
                 xTanggal = anggota.getTanggal();
                 xTinggi = anggota.getTinggi();
@@ -60,6 +61,7 @@ public class Grid extends RecyclerView.Adapter<Grid.ClassViewHolder>{
                 kirim.putExtra("xNama", xNama);
                 kirim.putExtra("xNpm", xNpm);
                 kirim.putExtra("xProdi", xProdi);
+                kirim.putExtra("xSabuk", xSabuk);
                 kirim.putExtra("xTempat", xTempat);
                 kirim.putExtra("xTanggal", xTanggal);
                 kirim.putExtra("xTinggi", xTinggi);
