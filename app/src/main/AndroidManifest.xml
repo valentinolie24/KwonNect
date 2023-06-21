@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,11 +15,15 @@
         android:theme="@style/Base.Theme.KwonNect.."
         tools:targetApi="31">
         <activity
+            android:name=".UpdateAnggota"
+            android:exported="false" />
+        <activity
+            android:name=".TambahAnggota"
+            android:exported="false" />
+        <activity
             android:name=".Detail"
-            android:parentActivityName=".MainActivity"
-            android:exported="false">
-        </activity>
-
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />

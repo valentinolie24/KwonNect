@@ -8,30 +8,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.valen.kwonnect.databinding.ActivityDetailBinding;
 
 public class Detail extends AppCompatActivity {
-
-    private ImageView ivFoto;
-    private TextView tvEmail, tvNama, tvNpm, tvProdi, tvSabuk, tvTempatLahir, tvTanggalLahir, tvTinggiBadan, tvBeratBadan, tvNoWa;
     private String yFoto, yEmail, yNama, yNpm, yProdi, ySabuk, yTempat, yTanggal, yTinggi, yBerat, yNoWa;
+
+    private ActivityDetailBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        ivFoto = findViewById(R.id.iv_foto);
-        tvEmail = findViewById(R.id.tv_email);
-        tvNama = findViewById(R.id.tv_nama);
-        tvNpm = findViewById(R.id.tv_npm);
-        tvProdi = findViewById(R.id.tv_prodi);
-        tvSabuk = findViewById(R.id.tv_sabuk);
-        tvTempatLahir = findViewById(R.id.tv_tempatLahir);
-        tvTanggalLahir = findViewById(R.id.tv_tanggalLahir);
-        tvTinggiBadan = findViewById(R.id.tv_tinggiBadan);
-        tvBeratBadan = findViewById(R.id.tv_beratBadan);
-        tvNoWa = findViewById(R.id.tv_noWhatsapp);
-
+        binding = ActivityDetailBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         Intent terima = getIntent();
         yFoto = terima.getStringExtra("xFoto");
@@ -46,20 +36,20 @@ public class Detail extends AppCompatActivity {
         yBerat = terima.getStringExtra("xBerat");
         yNoWa = terima.getStringExtra("xNoWa");
 
-        tvEmail.setText(yEmail);
-        tvNama.setText(yNama);
-        tvNpm.setText(yNpm);
-        tvProdi.setText(yProdi);
-        tvSabuk.setText(ySabuk);
-        tvTempatLahir.setText(yTempat);
-        tvTanggalLahir.setText(yTanggal);
-        tvTinggiBadan.setText(yTinggi);
-        tvBeratBadan.setText(yBerat);
-        tvNoWa.setText(yNoWa);
+        binding.tvEmail.setText(yEmail);
+        binding.tvNama.setText(yNama);
+        binding.tvNpm.setText(yNpm);
+        binding.tvProdi.setText(yProdi);
+        binding.tvSabuk.setText(ySabuk);
+        binding.tvTempatLahir.setText(yTempat);
+        binding.tvTanggalLahir.setText(yTanggal);
+        binding.tvTinggiBadan.setText(yTinggi);
+        binding.tvBeratBadan.setText(yBerat);
+        binding.tvNoWhatsapp.setText(yNoWa);
         Glide
                 .with(Detail.this)
                 .load(yFoto)
-                .into(ivFoto);
+                .into(binding.ivFoto);
 
     }
 }

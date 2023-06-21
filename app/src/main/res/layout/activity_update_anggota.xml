@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TambahAnggota">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:gravity="center"
+            android:text="Ubah Data Anggota"
+            android:textStyle="bold"
+            style="@style/TextAppearance.AppCompat.Large"/>
+
+        <ImageView
+            android:id="@+id/iv_foto"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ukmtaekwondo"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="20dp"
+            android:text="Foto"
+            android:textStyle="bold"
+            style="@style/TextAppearance.AppCompat.Medium"/>
+
+        <EditText
+            android:id="@+id/et_foto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Masukkan Link Foto..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="20dp"
+            android:text="Email"
+            android:textStyle="bold"
+            style="@style/TextAppearance.AppCompat.Medium"/>
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Masukkan Email..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="20dp"
+            android:text="Nama"
+            android:textStyle="bold"
+            style="@style/TextAppearance.AppCompat.Medium"/>
+
+        <EditText
+            android:id="@+id/et_nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Masukkan Nama..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="20dp"
+            android:text="NPM Anggota"
+            android:textStyle="bold"
+            style="@style/TextAppearance.AppCompat.Medium"/>
+
+        <EditText
+            android:id="@+id/et_npm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Masukkan NPM..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="20dp"
+            android:text="Prodi"
+            android:textStyle="bold"
+            style="@style/TextAppearance.AppCompat.Medium"/>
+
+        <EditText
+            android:id="@+id/et_prodi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Masukkan Prodi..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="20dp"
+            android:text="Sabuk"
+            android:textStyle="bold"
+            style="@style/TextAppearance.AppCompat.Medium"/>
+
+        <EditText
+            android:id="@+id/et_sabuk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Masukkan Sabuk..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="20dp"
+            android:text="Tempat Lahir"
+            android:textStyle="bold"
+            style="@style/TextAppearance.AppCompat.Medium"/>
+
+        <EditText
+            android:id="@+id/et_tempat_lahir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Masukkan Tempat Lahir..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="20dp"
+            android:text="Tanggal Lahir"
+            android:textStyle="bold"
+            style="@style/TextAppearance.AppCompat.Medium"/>
+
+        <EditText
+            android:id="@+id/et_tanggal_lahir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Masukkan Tanggal Lahir..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="20dp"
+            android:text="Tinggi Badan"
+            android:textStyle="bold"
+            style="@style/TextAppearance.AppCompat.Medium"/>
+
+        <EditText
+            android:id="@+id/et_tinggi_badan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Masukkan Tinggi Badan..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="20dp"
+            android:text="Berat Badan"
+            android:textStyle="bold"
+            style="@style/TextAppearance.AppCompat.Medium"/>
+
+        <EditText
+            android:id="@+id/et_berat_badan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Masukkan Berat Badan..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="20dp"
+            android:text="Nomor WhatsApp"
+            android:textStyle="bold"
+            style="@style/TextAppearance.AppCompat.Medium"/>
+
+        <EditText
+            android:id="@+id/et_nowa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Masukkan Nomor WhatsApp..."/>
+
+        <Button
+            android:id="@+id/btn_simpan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:text="Simpan"/>
+
+
+    </LinearLayout>
+
+
+</ScrollView>
