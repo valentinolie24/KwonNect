@@ -32,5 +32,43 @@ public class UpdateAnggota extends AppCompatActivity {
         berat = binding.etBeratBadan.getText().toString();
         nowa = binding.etNowa.getText().toString();
 
+        if (foto.trim().isEmpty()){
+            binding.etFoto.setError("Link foto harus diisi!");
+        }
+        else if (email.trim().isEmpty()) {
+            binding.etEmail.setError("Email harus diisi!");
+        }
+        else if (nama.trim().isEmpty()) {
+            binding.etNama.setError("Nama harus diisi!");
+        }
+        else if (npm.trim().isEmpty()) {
+            binding.etNpm.setError("NPM harus diisi!");
+        }
+        else if (prodi.trim().isEmpty()) {
+            binding.etProdi.setError("Prodi harus diisi!");
+        }
+        else if (sabuk.trim().isEmpty()) {
+            binding.etSabuk.setError("Sabuk harus diisi!");
+        }
+        else if (tempat.trim().isEmpty()) {
+            binding.etTempatLahir.setError("Tempat harus diisi!");
+        }
+        else if (tanggal.trim().isEmpty()) {
+            binding.etTanggalLahir.setError("Tanggal harus diisi!");
+        }
+        else if (tinggi.trim().isEmpty()) {
+            binding.etTinggiBadan.setError("Tinggi harus diisi!");
+        }
+        else if (berat.trim().isEmpty()) {
+            binding.etBeratBadan.setError("Berat harus diisi!");
+        }
+        else if (nowa.trim().isEmpty()) {
+            binding.etNowa.setError("No WhatsApp harus diisi!");
+        }
+        else {
+
+        }
+
+        
     }
 }

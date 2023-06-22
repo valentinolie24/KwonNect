@@ -11,7 +11,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,203 +28,227 @@
             android:layout_marginTop="20dp"
             android:src="@drawable/ukmtaekwondo"/>
 
-        <TextView
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="23dp"
-            android:layout_marginRight="20dp"
-            android:text="Foto"
-            android:textStyle="bold"
-            style="@style/TextAppearance.AppCompat.Medium"/>
-
-        <EditText
-            android:id="@+id/et_foto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="Masukkan Link Foto..."/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:hint="Link Foto"
+            app:startIconDrawable="@drawable/ic_image"
+            app:counterEnabled="true"
+            app:counterMaxLength="40"
+            app:endIconMode="clear_text"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="23dp"
-            android:layout_marginRight="20dp"
-            android:text="Email"
-            android:textStyle="bold"
-            style="@style/TextAppearance.AppCompat.Medium"/>
+            android:layout_marginRight="20dp">
 
-        <EditText
-            android:id="@+id/et_email"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_foto"
+                android:maxLength="40"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="Masukkan Email..."/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:hint="Email"
+            app:startIconDrawable="@drawable/ic_email"
+            app:counterEnabled="true"
+            app:counterMaxLength="40"
+            app:endIconMode="clear_text"
             android:layout_marginLeft="23dp"
-            android:layout_marginRight="20dp"
-            android:text="Nama"
-            android:textStyle="bold"
-            style="@style/TextAppearance.AppCompat.Medium"/>
+            android:layout_marginRight="20dp">
 
-        <EditText
-            android:id="@+id/et_nama"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_email"
+                android:maxLength="40"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="Masukkan Nama..."/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:hint="Nama"
+            app:startIconDrawable="@drawable/ic_person"
+            app:counterEnabled="true"
+            app:counterMaxLength="40"
+            app:endIconMode="clear_text"
             android:layout_marginLeft="23dp"
-            android:layout_marginRight="20dp"
-            android:text="NPM Anggota"
-            android:textStyle="bold"
-            style="@style/TextAppearance.AppCompat.Medium"/>
+            android:layout_marginRight="20dp">
 
-        <EditText
-            android:id="@+id/et_npm"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_nama"
+                android:maxLength="40"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="Masukkan NPM..."/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:hint="NPM"
+            app:startIconDrawable="@drawable/ic_npm"
+            app:counterEnabled="true"
+            app:counterMaxLength="12"
+            app:endIconMode="clear_text"
             android:layout_marginLeft="23dp"
-            android:layout_marginRight="20dp"
-            android:text="Prodi"
-            android:textStyle="bold"
-            style="@style/TextAppearance.AppCompat.Medium"/>
+            android:layout_marginRight="20dp">
 
-        <EditText
-            android:id="@+id/et_prodi"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_npm"
+                android:maxLength="12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="Masukkan Prodi..."/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:hint="Prodi"
+            app:startIconDrawable="@drawable/ic_prodi"
+            app:counterEnabled="true"
+            app:counterMaxLength="30"
+            app:endIconMode="clear_text"
             android:layout_marginLeft="23dp"
-            android:layout_marginRight="20dp"
-            android:text="Sabuk"
-            android:textStyle="bold"
-            style="@style/TextAppearance.AppCompat.Medium"/>
+            android:layout_marginRight="20dp">
 
-        <EditText
-            android:id="@+id/et_sabuk"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_prodi"
+                android:maxLength="30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="Masukkan Sabuk..."/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:hint="Sabuk"
+            app:startIconDrawable="@drawable/ic_sabuk"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:endIconMode="clear_text"
             android:layout_marginLeft="23dp"
-            android:layout_marginRight="20dp"
-            android:text="Tempat Lahir"
-            android:textStyle="bold"
-            style="@style/TextAppearance.AppCompat.Medium"/>
+            android:layout_marginRight="20dp">
 
-        <EditText
-            android:id="@+id/et_tempat_lahir"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_sabuk"
+                android:maxLength="10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="Masukkan Tempat Lahir..."/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:hint="Tempat Lahir"
+            app:startIconDrawable="@drawable/ic_tempat"
+            app:counterEnabled="true"
+            app:counterMaxLength="40"
+            app:endIconMode="clear_text"
             android:layout_marginLeft="23dp"
-            android:layout_marginRight="20dp"
-            android:text="Tanggal Lahir"
-            android:textStyle="bold"
-            style="@style/TextAppearance.AppCompat.Medium"/>
+            android:layout_marginRight="20dp">
 
-        <EditText
-            android:id="@+id/et_tanggal_lahir"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_tempat_lahir"
+                android:maxLength="40"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="Masukkan Tanggal Lahir..."/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:hint="Tanggal Lahir"
+            app:startIconDrawable="@drawable/ic_tanggal"
+            app:counterEnabled="true"
+            app:counterMaxLength="40"
+            app:endIconMode="clear_text"
             android:layout_marginLeft="23dp"
-            android:layout_marginRight="20dp"
-            android:text="Tinggi Badan"
-            android:textStyle="bold"
-            style="@style/TextAppearance.AppCompat.Medium"/>
+            android:layout_marginRight="20dp">
 
-        <EditText
-            android:id="@+id/et_tinggi_badan"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_tanggal_lahir"
+                android:maxLength="40"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="Masukkan Tinggi Badan..."/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:hint="Tinggi Badan"
+            app:startIconDrawable="@drawable/ic_tinggi"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:endIconMode="clear_text"
             android:layout_marginLeft="23dp"
-            android:layout_marginRight="20dp"
-            android:text="Berat Badan"
-            android:textStyle="bold"
-            style="@style/TextAppearance.AppCompat.Medium"/>
+            android:layout_marginRight="20dp">
 
-        <EditText
-            android:id="@+id/et_berat_badan"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_tinggi_badan"
+                android:maxLength="10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="Masukkan Berat Badan..."/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:hint="Berat Badan"
+            app:startIconDrawable="@drawable/ic_berat"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:endIconMode="clear_text"
             android:layout_marginLeft="23dp"
-            android:layout_marginRight="20dp"
-            android:text="Nomor WhatsApp"
-            android:textStyle="bold"
-            style="@style/TextAppearance.AppCompat.Medium"/>
+            android:layout_marginRight="20dp">
 
-        <EditText
-            android:id="@+id/et_nowa"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_berat_badan"
+                android:maxLength="10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="Masukkan Nomor WhatsApp..."/>
+            android:hint="Nomor WhatsApp"
+            app:startIconDrawable="@drawable/ic_nowa"
+            app:counterEnabled="true"
+            app:counterMaxLength="13"
+            app:endIconMode="clear_text"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_nowa"
+                android:maxLength="13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <Button
             android:id="@+id/btn_simpan"
