@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.valen.kwonnect.databinding.ActivityDetailBinding;
@@ -18,8 +19,6 @@ public class Detail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
-
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -51,5 +50,6 @@ public class Detail extends AppCompatActivity {
                 .load(yFoto)
                 .into(binding.ivFoto);
 
+        Toast.makeText(this, "Tanggal Lahir " + ySabuk, Toast.LENGTH_SHORT).show();
     }
 }

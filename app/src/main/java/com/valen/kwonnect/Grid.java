@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class Grid extends RecyclerView.Adapter<Grid.ClassViewHolder>{
+public class Grid extends RecyclerView.Adapter<Grid.ClassViewHolder> {
     private ArrayList<AnggotaModel> dataAnggota;
     private Context ctx;
 
@@ -78,6 +78,10 @@ public class Grid extends RecyclerView.Adapter<Grid.ClassViewHolder>{
         return dataAnggota.size();
     }
 
+    public void setData(ArrayList<AnggotaModel> data) {
+        this.dataAnggota = data;
+    }
+
     public class ClassViewHolder extends RecyclerView.ViewHolder {
         ImageView ivGrid;
 
@@ -87,6 +91,3 @@ public class Grid extends RecyclerView.Adapter<Grid.ClassViewHolder>{
         }
     }
 }
-
-
-

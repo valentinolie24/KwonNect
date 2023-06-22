@@ -35,7 +35,6 @@
             android:hint="Link Foto"
             app:startIconDrawable="@drawable/ic_image"
             app:counterEnabled="true"
-            app:counterMaxLength="40"
             app:endIconMode="clear_text"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="23dp"
@@ -43,7 +42,6 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_foto"
-                android:maxLength="40"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

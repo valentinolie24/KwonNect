@@ -3,14 +3,21 @@ package com.valen.kwonnect;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.valen.kwonnect.databinding.ActivityDetailBinding;
 import com.valen.kwonnect.databinding.ActivityTambahAnggotaBinding;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class TambahAnggota extends AppCompatActivity {
-    String foto, email, nama, npm, prodi, sabuk, tempat, tanggal, tinggi, berat, nowa;
+    String user_id, foto, email, nama, npm, prodi, sabuk, tempat, tanggal, tinggi, berat, nowa;
     private ActivityTambahAnggotaBinding binding;
 
     @Override
@@ -33,41 +40,88 @@ public class TambahAnggota extends AppCompatActivity {
         berat = binding.etBeratBadan.getText().toString();
         nowa = binding.etNowa.getText().toString();
 
-        if (foto.trim().isEmpty()){
-            binding.etFoto.setError("Link foto harus diisi!");
-        }
-        else if (email.trim().isEmpty()) {
-            binding.etEmail.setError("Email harus diisi!");
-        }
-        else if (nama.trim().isEmpty()) {
-            binding.etNama.setError("Nama harus diisi!");
-        }
-        else if (npm.trim().isEmpty()) {
-            binding.etNpm.setError("NPM harus diisi!");
-        }
-        else if (prodi.trim().isEmpty()) {
-            binding.etProdi.setError("Prodi harus diisi!");
-        }
-        else if (sabuk.trim().isEmpty()) {
-            binding.etSabuk.setError("Sabuk harus diisi!");
-        }
-        else if (tempat.trim().isEmpty()) {
-            binding.etTempatLahir.setError("Tempat harus diisi!");
-        }
-        else if (tanggal.trim().isEmpty()) {
-            binding.etTanggalLahir.setError("Tanggal harus diisi!");
-        }
-        else if (tinggi.trim().isEmpty()) {
-            binding.etTinggiBadan.setError("Tinggi harus diisi!");
-        }
-        else if (berat.trim().isEmpty()) {
-            binding.etBeratBadan.setError("Berat harus diisi!");
-        }
-        else if (nowa.trim().isEmpty()) {
-            binding.etNowa.setError("No WhatsApp harus diisi!");
-        }
-        else {
+        binding.btnSimpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String foto, email, nama, npm, prodi, sabuk, tempat, tanggal, tinggi, berat, nowa;
+                foto = binding.etFoto.getText().toString();
+                email = binding.etEmail.getText().toString();
+                nama = binding.etNama.getText().toString();
+                npm = binding.etNpm.getText().toString();
+                prodi = binding.etProdi.getText().toString();
+                sabuk = binding.etSabuk.getText().toString();
+                tempat = binding.etTempatLahir.getText().toString();
+                tanggal = binding.etTanggalLahir.getText().toString();
+                tinggi = binding.etTinggiBadan.getText().toString();
+                berat = binding.etBeratBadan.getText().toString();
+                nowa = binding.etNowa.getText().toString();
 
-        }
+                if (TextUtils.isEmpty(foto)) {
+                    binding.etFoto.setError("Link foto harus diisi!");
+                } else if (TextUtils.isEmpty(email)) {
+                    binding.etEmail.setError("Email harus diisi!");
+                } else if (TextUtils.isEmpty(nama)) {
+                    binding.etNama.setError("Nama harus diisi!");
+                } else if (TextUtils.isEmpty(npm)) {
+                    binding.etNpm.setError("NPM harus diisi!");
+                } else if (TextUtils.isEmpty(prodi)) {
+                    binding.etProdi.setError("Prodi harus diisi!");
+                } else if (TextUtils.isEmpty(sabuk)) {
+                    binding.etSabuk.setError("Sabuk harus diisi!");
+                } else if (TextUtils.isEmpty(tempat)) {
+                    binding.etTempatLahir.setError("Tempat lahir harus diisi!");
+                } else if (TextUtils.isEmpty(tanggal)) {
+                    binding.etTanggalLahir.setError("Tanggal lahir harus diisi!");
+                } else if (TextUtils.isEmpty(tinggi)) {
+                    binding.etTinggiBadan.setError("Tinggi badan harus diisi!");
+                } else if (TextUtils.isEmpty(berat)) {
+                    binding.etBeratBadan.setError("Berat badan harus diisi!");
+                } else if (TextUtils.isEmpty(nowa)) {
+                    binding.etNowa.setError("NPM harus diisi!");
+                } else {
+                    addAnggota(foto, email, nama, npm, prodi, sabuk, tempat, tanggal, tinggi, berat, nowa);
+                }
+            }
+        });
+    }
+
+    private void addAnggota(String foto, String email, String nama, String npm, String prodi, String sabuk, String tempat, String tanggal, String tinggi, String berat, String nowa){
+        APIService api = Utilities.getRetrofit().create(APIService.class);
+        Call<ValueNoData> call = api.addAnggota(user_id, foto, email, nama, npm, prodi, sabuk, tempat, tanggal, tinggi, berat, nowa);
+        call.enqueue(new Callback<ValueNoData>() {
+            @Override
+            public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {
+                if (response.code() == 200){
+                    int success = response.body().getSuccess();
+                    String message = response.body().getMessage();
+                    if (success == 1){
+                        Toast.makeText(TambahAnggota.this, message, Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        Toast.makeText(TambahAnggota.this, message, Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(TambahAnggota.this, "Response " + response.code(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ValueNoData> call, Throwable t) {
+                System.out.println("Retrofit Error : " + t.getMessage());
+                Toast.makeText(TambahAnggota.this, "Retrofit Error : " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

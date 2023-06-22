@@ -1,6 +1,8 @@
 package com.valen.kwonnect;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 public class Card extends RecyclerView.Adapter<Card.ClassViewHolder> {
     private ArrayList<AnggotaModel> dataAnggota;
     private Context ctx;
+
 
     public Card(ArrayList<AnggotaModel> dataAnggota, Context ctx) {
         this.dataAnggota = dataAnggota;
@@ -38,7 +41,6 @@ public class Card extends RecyclerView.Adapter<Card.ClassViewHolder> {
         holder.tvNpm.setText(anggota.getNpm());
         holder.tvProdi.setText(anggota.getProdi());
         holder.tvSabuk.setText(anggota.getSabuk());
-
         Glide.with(ctx)
                 .load(anggota.getFoto())
                 .centerCrop()
@@ -75,11 +77,53 @@ public class Card extends RecyclerView.Adapter<Card.ClassViewHolder> {
                 ctx.startActivity(kirim);
             }
         });
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                AlertDialog.Builder pesan = new AlertDialog.Builder(ctx);
+                pesan.setTitle("Perhatian");
+                pesan.setMessage("Anda memilihi anggota dengan nama " + holder.tvNama.getText().toString());
+                pesan.setCancelable(true);
+
+                pesan.setNegativeButton("Hapus", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+                // action button ubah
+                pesan.setPositiveButton("Ubah", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent kirim = new Intent(ctx, UpdateAnggota.class);
+                        kirim.putExtra("xEmail", holder.tvEmail.getText().toString());
+                        kirim.putExtra("xNama", holder.tvNama.getText().toString());
+                        kirim.putExtra("xNpm", holder.tvNpm.getText().toString());
+                        kirim.putExtra("xProdi", holder.tvProdi.getText().toString());
+                        kirim.putExtra("xSabuk", holder.tvSabuk.getText().toString());
+                        kirim.putExtra("xTempat", holder.tvTempatLahir.getText().toString());
+                        kirim.putExtra("xTanggal", holder.tvTanggalLahir.getText().toString());
+                        kirim.putExtra("xTinggi", holder.tvTinggiBadan.getText().toString());
+                        kirim.putExtra("xBerat", holder.tvBeratBadan.getText().toString());
+                        kirim.putExtra("xNoWa", holder.tvNoWa.getText().toString());
+                    }
+                });
+                pesan.show();
+                return false;
+            }
+        });
+
     }
+
 
     @Override
     public int getItemCount() {
         return dataAnggota.size();
+    }
+
+    public void setData(ArrayList<AnggotaModel> data) {
+        this.dataAnggota = data;
     }
 
     public class ClassViewHolder extends RecyclerView.ViewHolder {

@@ -1,6 +1,13 @@
 package com.valen.kwonnect;
 
-public class AnggotaModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class AnggotaModel implements Parcelable {
+    private String id;
+    private String user_id;
+    private String create_date;
+    private String modified_date;
     private String email;
     private String nama;
     private String npm;
@@ -12,6 +19,84 @@ public class AnggotaModel {
     private String berat;
     private String tinggi;
     private String nowa;
+
+    protected AnggotaModel(Parcel in) {
+        id = in.readString();
+        user_id = in.readString();
+        create_date = in.readString();
+        modified_date = in.readString();
+        email = in.readString();
+        nama = in.readString();
+        npm = in.readString();
+        prodi = in.readString();
+        sabuk = in.readString();
+        foto = in.readString();
+        tempat = in.readString();
+        tanggal = in.readString();
+        berat = in.readString();
+        tinggi = in.readString();
+        nowa = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(user_id);
+        dest.writeString(create_date);
+        dest.writeString(modified_date);
+        dest.writeString(email);
+        dest.writeString(nama);
+        dest.writeString(npm);
+        dest.writeString(prodi);
+        dest.writeString(sabuk);
+        dest.writeString(foto);
+        dest.writeString(tempat);
+        dest.writeString(tanggal);
+        dest.writeString(berat);
+        dest.writeString(tinggi);
+        dest.writeString(nowa);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Parcelable.Creator<AnggotaModel> CREATOR = new Parcelable.Creator<AnggotaModel>() {
+        @Override
+        public AnggotaModel createFromParcel(Parcel in) {
+            return new AnggotaModel(in);
+        }
+
+        @Override
+        public AnggotaModel[] newArray(int size) {
+            return new AnggotaModel[size];
+        }
+    };
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getCreate_date() {
+        return create_date;
+    }
+
+    public void setCreate_date(String create_date) {
+        this.create_date = create_date;
+    }
+
+    public String getModified_date() {
+        return modified_date;
+    }
+
+    public void setModified_date(String modified_date) {
+        this.modified_date = modified_date;
+    }
 
     public String getEmail() {
         return email;
