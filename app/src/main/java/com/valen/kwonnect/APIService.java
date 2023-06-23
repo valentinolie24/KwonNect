@@ -28,7 +28,7 @@ public interface APIService {
 
     @FormUrlEncoded
     @POST("anggota")
-    Call<ValueNoData> addAnggota(
+    Call<ValueNoData> addAnggota(@Field("user_id") String user_id,
                                  @Field("foto") String foto,
                                  @Field("email") String email,
                                  @Field("nama") String nama,
@@ -42,7 +42,7 @@ public interface APIService {
                                  @Field("nomor_whatsapp") String nomor_whatsapp);
 
     @FormUrlEncoded
-    @PUT("post")
+    @PUT("anggota")
     Call<ValueNoData> updateAnggota(@Field("id") String id,
                                     @Field("foto") String foto,
                                     @Field("email") String email,
@@ -53,8 +53,9 @@ public interface APIService {
                                     @Field("tempat_lahir") String tempat_lahir,
                                     @Field("tanggal_lahir") String tanggal_lahir,
                                     @Field("tinggi_badan") String tinggi_badan,
-                                    @Field("berat_badan") String berat_badan);
+                                    @Field("berat_badan") String berat_badan,
+                                    @Field("nomor_whatsapp") String nomor_whatsapp);
 
-    @DELETE("post/{id}")
+    @DELETE("anggota/{id}")
     Call<ValueNoData> deleteAnggota(@Path("id") String id);
 }

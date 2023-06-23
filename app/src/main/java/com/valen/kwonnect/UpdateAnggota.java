@@ -12,7 +12,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UpdateAnggota extends AppCompatActivity {
-    String yFoto, yEmail, yNama, yNpm, yProdi, ySabuk, yTempat, yTanggal, yTinggi, yBerat, yNoWa;
+    String yId, yFoto, yEmail, yNama, yNpm, yProdi, ySabuk, yTempat, yTanggal, yTinggi, yBerat, yNoWa;
     String foto, email, nama, npm, prodi, sabuk, tempat, tanggal, tinggi, berat, nowa;
     private ActivityUpdateAnggotaBinding binding;
 
@@ -24,6 +24,7 @@ public class UpdateAnggota extends AppCompatActivity {
 
 
         Intent terima = getIntent();
+        yId = terima.getStringExtra("xId");
         yFoto = terima.getStringExtra("xFoto");
         yEmail = terima.getStringExtra("xEmail");
         yNama = terima.getStringExtra("xNama");
@@ -104,7 +105,7 @@ public class UpdateAnggota extends AppCompatActivity {
         }
         else {
             APIService apiService = Utilities.getRetrofit().create(APIService.class);
-            Call<ValueNoData> call = apiService.updateAnggota(foto, email, nama, npm, prodi, sabuk, tempat, tanggal, tinggi, berat, nowa);
+            Call<ValueNoData> call = apiService.updateAnggota(yId, foto, email, nama, npm, prodi, sabuk, tempat, tanggal, tinggi, berat, nowa);
             call.enqueue(new Callback<ValueNoData>() {
                 @Override
                 public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {

@@ -60,11 +60,11 @@ public class Card extends RecyclerView.Adapter<Card.ClassViewHolder> {
                 String xNpm = anggota.getNpm();
                 String xProdi = anggota.getProdi();
                 String xSabuk = anggota.getSabuk();
-                String xTempat = anggota.getTempat();
-                String xTanggal = anggota.getTanggal();
-                String xTinggi = anggota.getTinggi();
-                String xBerat = anggota.getBerat();
-                String xNoWa = anggota.getNowa();
+                String xTempat = anggota.getTempat_lahir();
+                String xTanggal = anggota.getTanggal_lahir();
+                String xTinggi = anggota.getTinggi_badan();
+                String xBerat = anggota.getBerat_badan();
+                String xNoWa = anggota.getNomor_whatsapp();
 
                 Intent kirim = new Intent(ctx, Detail.class);
                 kirim.putExtra("xFoto", xFoto);
@@ -84,40 +84,9 @@ public class Card extends RecyclerView.Adapter<Card.ClassViewHolder> {
         });
 
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+
             @Override
             public boolean onLongClick(View v) {
-                AlertDialog.Builder pesan = new AlertDialog.Builder(ctx);
-                pesan.setTitle("Perhatian");
-                pesan.setMessage("Anda memilih anggota dengan nama " + anggota.getNama());
-                pesan.setCancelable(true);
-
-                pesan.setNegativeButton("Hapus", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Handle delete action
-                    }
-                });
-
-                pesan.setPositiveButton("Ubah", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent kirim = new Intent(ctx, UpdateAnggota.class);
-                        kirim.putExtra("xEmail", anggota.getEmail());
-                        kirim.putExtra("xNama", anggota.getNama());
-                        kirim.putExtra("xNpm", anggota.getNpm());
-                        kirim.putExtra("xProdi", anggota.getProdi());
-                        kirim.putExtra("xSabuk", anggota.getSabuk());
-                        kirim.putExtra("xTempat", anggota.getTempat());
-                        kirim.putExtra("xTanggal", anggota.getTanggal());
-                        kirim.putExtra("xTinggi", anggota.getTinggi());
-                        kirim.putExtra("xBerat", anggota.getBerat());
-                        kirim.putExtra("xNoWa", anggota.getNowa());
-
-                        ctx.startActivity(kirim);
-                    }
-                });
-
-                pesan.show();
                 return false;
             }
         });
@@ -139,7 +108,7 @@ public class Card extends RecyclerView.Adapter<Card.ClassViewHolder> {
     public interface OnItemLongClickListener {
         void onLongClick(AnggotaModel anggota);
 
-        void onItemLongClick(View view, AnggotaModel anggotaModel, int position);
+        boolean onItemLongClick(View view, AnggotaModel anggotaModel, int position);
     }
 
     public class ClassViewHolder extends RecyclerView.ViewHolder {

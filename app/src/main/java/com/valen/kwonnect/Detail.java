@@ -49,7 +49,5 @@ public class Detail extends AppCompatActivity {
                 .with(Detail.this)
                 .load(yFoto)
                 .into(binding.ivFoto);
-
-        Toast.makeText(this, "Tanggal Lahir " + ySabuk, Toast.LENGTH_SHORT).show();
     }
 }

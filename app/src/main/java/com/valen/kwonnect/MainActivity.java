@@ -1,16 +1,15 @@
 package com.valen.kwonnect;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private Card cardAdapter;
     private Grid gridAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,16 +53,55 @@ public class MainActivity extends AppCompatActivity {
         gridAdapter = new Grid();
         binding.rvAnggota.setLayoutManager(new LinearLayoutManager(this));
         binding.rvAnggota.setAdapter(cardAdapter);
+        binding.rvAnggota.setAdapter(gridAdapter);
         cardAdapter.setOnItemLongClickListener(new Card.OnItemLongClickListener() {
+            public boolean onItemLongClick(View v, AnggotaModel anggotaModel, int position) {
+                PopupMenu popupMenu = new PopupMenu(MainActivity.this, v);
+                popupMenu.inflate(R.menu.menu_popup);
+                popupMenu.setGravity(Gravity.RIGHT);
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        int idMenu = item.getItemId();
+                        if (idMenu == R.id.action_edit) {
+                            Intent intent = new Intent(MainActivity.this, UpdateAnggota.class);
+                            intent.putExtra("EXTRA_DATA", anggotaModel);
+                            startActivity(intent);
+                            return true;
+                        }
+                        else if (idMenu == R.id.action_delete) {
+                            String id = anggotaModel.getId();
+                            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                            builder.setTitle("Konfirmasi");
+                            builder.setMessage("Yakin ingin menghapus anggota " + data.get(position).getNama() + " ?");
+                            builder.setPositiveButton("Hapus", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    deleteAnggota(id);
+                                }
+                            });
+                            builder.setNegativeButton("Jangan Hapus", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                            AlertDialog alertDialog = builder.create();
+                            alertDialog.show();
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
+                    }
+                });
+                return false;
+            }
             @Override
             public void onLongClick(AnggotaModel anggota) {
 
             }
 
-            @Override
-            public void onItemLongClick(View view, AnggotaModel anggotaModel, int position) {
-
-            }
         });
 
         binding.fabAdd.setOnClickListener(new View.OnClickListener() {
@@ -82,21 +121,18 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<ValueNoData>() {
             @Override
             public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {
-                if (response.isSuccessful()) {
-                    ValueNoData value = response.body();
-                    if (value != null && value.getSuccess() == 1) {
-                        Toast.makeText(MainActivity.this, value.getMessage(), Toast.LENGTH_SHORT).show();
-                        // Remove the deleted item from the data list
-                        int position = findPositionById(id);
-                        if (position != -1) {
-                            data.remove(position);
-                            cardAdapter.notifyItemRemoved(position);
-                        }
+                if (response.code() == 200){
+                    int success = response.body().getSuccess();
+                    String message = response.body().getMessage();
+
+                    if (success == 1){
+                        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                        getAllAnggota();
                     } else {
-                        Toast.makeText(MainActivity.this, "Failed to delete item: " + value.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(MainActivity.this, "Response failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Response " + response.code(), Toast.LENGTH_SHORT).show();
                 }
             }
 

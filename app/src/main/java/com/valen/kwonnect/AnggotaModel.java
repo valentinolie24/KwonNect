@@ -14,11 +14,14 @@ public class AnggotaModel implements Parcelable {
     private String prodi;
     private String sabuk;
     private String foto;
-    private String tempat;
-    private String tanggal;
-    private String berat;
-    private String tinggi;
-    private String nowa;
+    private String tempat_lahir;
+    private String tanggal_lahir;
+    private String berat_badan;
+    private String tinggi_badan;
+    private String nomor_whatsapp;
+
+    public AnggotaModel() {
+    }
 
     protected AnggotaModel(Parcel in) {
         id = in.readString();
@@ -31,11 +34,11 @@ public class AnggotaModel implements Parcelable {
         prodi = in.readString();
         sabuk = in.readString();
         foto = in.readString();
-        tempat = in.readString();
-        tanggal = in.readString();
-        berat = in.readString();
-        tinggi = in.readString();
-        nowa = in.readString();
+        tempat_lahir = in.readString();
+        tanggal_lahir = in.readString();
+        berat_badan = in.readString();
+        tinggi_badan = in.readString();
+        nomor_whatsapp = in.readString();
     }
 
     @Override
@@ -50,11 +53,11 @@ public class AnggotaModel implements Parcelable {
         dest.writeString(prodi);
         dest.writeString(sabuk);
         dest.writeString(foto);
-        dest.writeString(tempat);
-        dest.writeString(tanggal);
-        dest.writeString(berat);
-        dest.writeString(tinggi);
-        dest.writeString(nowa);
+        dest.writeString(tempat_lahir);
+        dest.writeString(tanggal_lahir);
+        dest.writeString(berat_badan);
+        dest.writeString(tinggi_badan);
+        dest.writeString(nomor_whatsapp);
     }
 
     @Override
@@ -62,7 +65,7 @@ public class AnggotaModel implements Parcelable {
         return 0;
     }
 
-    public static final Parcelable.Creator<AnggotaModel> CREATOR = new Parcelable.Creator<AnggotaModel>() {
+    public static final Creator<AnggotaModel> CREATOR = new Creator<AnggotaModel>() {
         @Override
         public AnggotaModel createFromParcel(Parcel in) {
             return new AnggotaModel(in);
@@ -80,6 +83,14 @@ public class AnggotaModel implements Parcelable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getCreate_date() {
@@ -146,43 +157,43 @@ public class AnggotaModel implements Parcelable {
         this.foto = foto;
     }
 
-    public String getTempat() {
-        return tempat;
+    public String getTempat_lahir() {
+        return tempat_lahir;
     }
 
-    public void setTempat(String tempat) {
-        this.tempat = tempat;
+    public void setTempat_lahir(String tempat_lahir) {
+        this.tempat_lahir = tempat_lahir;
     }
 
-    public String getTanggal() {
-        return tanggal;
+    public String getTanggal_lahir() {
+        return tanggal_lahir;
     }
 
-    public void setTanggal(String tanggal) {
-        this.tanggal = tanggal;
+    public void setTanggal_lahir(String tanggal_lahir) {
+        this.tanggal_lahir = tanggal_lahir;
     }
 
-    public String getBerat() {
-        return berat;
+    public String getBerat_badan() {
+        return berat_badan;
     }
 
-    public void setBerat(String berat) {
-        this.berat = berat;
+    public void setBerat_badan(String berat_badan) {
+        this.berat_badan = berat_badan;
     }
 
-    public String getTinggi() {
-        return tinggi;
+    public String getTinggi_badan() {
+        return tinggi_badan;
     }
 
-    public void setTinggi(String tinggi) {
-        this.tinggi = tinggi;
+    public void setTinggi_badan(String tinggi_badan) {
+        this.tinggi_badan = tinggi_badan;
     }
 
-    public String getNowa() {
-        return nowa;
+    public String getNomor_whatsapp() {
+        return nomor_whatsapp;
     }
 
-    public void setNowa(String nowa) {
-        this.nowa = nowa;
+    public void setNomor_whatsapp(String nomor_whatsapp) {
+        this.nomor_whatsapp = nomor_whatsapp;
     }
 }

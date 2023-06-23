@@ -78,15 +78,16 @@ public class TambahAnggota extends AppCompatActivity {
                 } else if (TextUtils.isEmpty(nomor_whatsapp)) {
                     binding.etNowa.setError("NPM harus diisi!");
                 } else {
-                    addAnggota(foto, email, nama, npm, prodi, sabuk, tempat_lahir, tanggal_lahir, tinggi_badan, berat_badan, nomor_whatsapp);
+                    String user_id = Utilities.getValue(TambahAnggota.this, "xUserId");
+                    addAnggota(user_id, foto, email, nama, npm, prodi, sabuk, tempat_lahir, tanggal_lahir, tinggi_badan, berat_badan, nomor_whatsapp);
                 }
             }
         });
     }
 
-    private void addAnggota(String foto, String email, String nama, String npm, String prodi, String sabuk, String tempat_lahir, String tanggal_lahir, String tinggi_badan, String berat_badan, String nomor_whatsapp){
+    private void addAnggota(String user_id, String foto, String email, String nama, String npm, String prodi, String sabuk, String tempat_lahir, String tanggal_lahir, String tinggi_badan, String berat_badan, String nomor_whatsapp){
         APIService api = Utilities.getRetrofit().create(APIService.class);
-        Call<ValueNoData> call = api.addAnggota(foto, email, nama, npm, prodi, sabuk, tempat_lahir, tanggal_lahir, tinggi_badan, berat_badan, nomor_whatsapp);
+        Call<ValueNoData> call = api.addAnggota(user_id, foto, email, nama, npm, prodi, sabuk, tempat_lahir, tanggal_lahir, tinggi_badan, berat_badan, nomor_whatsapp);
         call.enqueue(new Callback<ValueNoData>() {
             @Override
             public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {

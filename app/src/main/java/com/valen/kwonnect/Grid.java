@@ -54,11 +54,11 @@ public class Grid extends RecyclerView.Adapter<Grid.ClassViewHolder> {
                 xNpm = anggota.getNpm();
                 xProdi = anggota.getProdi();
                 xSabuk = anggota.getSabuk();
-                xTempat = anggota.getTempat();
-                xTanggal = anggota.getTanggal();
-                xTinggi = anggota.getTinggi();
-                xBerat = anggota.getBerat();
-                xNoWa = anggota.getNowa();
+                xTempat = anggota.getTempat_lahir();
+                xTanggal = anggota.getTanggal_lahir();
+                xTinggi = anggota.getTinggi_badan();
+                xBerat = anggota.getBerat_badan();
+                xNoWa = anggota.getNomor_whatsapp();
 
                 Intent kirim = new Intent(ctx, Detail.class);
                 kirim.putExtra("xFoto", xFoto);
