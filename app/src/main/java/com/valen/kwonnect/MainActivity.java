@@ -19,7 +19,6 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.valen.kwonnect.databinding.ActivityMainBinding;
-import com.valen.kwonnect.databinding.ActivityTambahAnggotaBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +29,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rvAnggota;
-    private ArrayList<AnggotaModel> data = new ArrayList<>();
+    private final ArrayList<AnggotaModel> data = new ArrayList<>();
     private ActivityMainBinding binding;
     private Card cardAdapter;
     private Grid gridAdapter;
@@ -50,51 +49,19 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-//        Card = new card();
-//        Grid = new grid();
-//        binding.rvUnggah.setLayoutManager(new LinearLayoutManager(this));
-//        binding.rvUnggah.setAdapter(cardAdapter);
-        Card.setOnItemLongClickListener(new UnggahViewAdapter.OnItemLongClickListener() {
+        cardAdapter = new Card();
+        gridAdapter = new Grid();
+        binding.rvAnggota.setLayoutManager(new LinearLayoutManager(this));
+        binding.rvAnggota.setAdapter(cardAdapter);
+        cardAdapter.setOnItemLongClickListener(new Card.OnItemLongClickListener() {
+            @Override
+            public void onLongClick(AnggotaModel anggota) {
+
+            }
+
             @Override
             public void onItemLongClick(View view, AnggotaModel anggotaModel, int position) {
-                PopupMenu popupMenu = new PopupMenu(MainActivity.this, view);
-                popupMenu.inflate(R.menu.menu_popup);
-                popupMenu.setGravity(Gravity.RIGHT);
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        int idMenu = item.getItemId();
-                        if (idMenu == R.id.action_edit){
-                            Intent intent = new Intent(MainActivity.this, UpdateAnggota.class);
-                            intent.putExtra("EXTRA_DATA", (Parcelable) anggotaModel);
-                            startActivity(intent);
-                            return true;
-                        } else if (idMenu == R.id.action_delete) {
-                            String id = anggotaModel.getId();
-                            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                            builder.setTitle("Konfirmasi");
-                            builder.setMessage("Yakin ingin menghapus unggah '" + data.get(position).getContent() + "' ?");
-                            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    deleteAnggota(id);
-                                }
-                            });
-                            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.cancel();
-                                }
-                            });
-                            AlertDialog alertDialog = builder.create();
-                            alertDialog.show();
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }
-                });
-                popupMenu.show();
+
             }
         });
 
@@ -115,27 +82,38 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<ValueNoData>() {
             @Override
             public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {
-                if (response.code() == 200){
-                    int success = response.body().getSuccess();
-                    String message = response.body().getMessage();
-
-                    if (success == 1){
-                        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
-                        getAllAnggota();
+                if (response.isSuccessful()) {
+                    ValueNoData value = response.body();
+                    if (value != null && value.getSuccess() == 1) {
+                        Toast.makeText(MainActivity.this, value.getMessage(), Toast.LENGTH_SHORT).show();
+                        // Remove the deleted item from the data list
+                        int position = findPositionById(id);
+                        if (position != -1) {
+                            data.remove(position);
+                            cardAdapter.notifyItemRemoved(position);
+                        }
                     } else {
-                        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Failed to delete item: " + value.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(MainActivity.this, "Response " + response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Response failed", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ValueNoData> call, Throwable t) {
-                System.out.println("Retrofit Error : " + t.getMessage());
-                Toast.makeText(MainActivity.this, "Retrofit Error : " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private int findPositionById(String id) {
+        for (int i = 0; i < data.size(); i++) {
+            if (data.get(i).getId().equals(id)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override

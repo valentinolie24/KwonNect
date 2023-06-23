@@ -23,6 +23,11 @@ public class Grid extends RecyclerView.Adapter<Grid.ClassViewHolder> {
         this.ctx = ctx;
     }
 
+    public Grid() {
+        this.dataAnggota = dataAnggota;
+        this.ctx = ctx;
+    }
+
     @NonNull
     @Override
     public ClassViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

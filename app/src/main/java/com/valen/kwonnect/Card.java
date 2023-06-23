@@ -20,9 +20,14 @@ import java.util.ArrayList;
 public class Card extends RecyclerView.Adapter<Card.ClassViewHolder> {
     private ArrayList<AnggotaModel> dataAnggota;
     private Context ctx;
-
+    private OnItemLongClickListener onItemLongClickListener;
 
     public Card(ArrayList<AnggotaModel> dataAnggota, Context ctx) {
+        this.dataAnggota = dataAnggota;
+        this.ctx = ctx;
+    }
+
+    public Card() {
         this.dataAnggota = dataAnggota;
         this.ctx = ctx;
     }
@@ -83,39 +88,40 @@ public class Card extends RecyclerView.Adapter<Card.ClassViewHolder> {
             public boolean onLongClick(View v) {
                 AlertDialog.Builder pesan = new AlertDialog.Builder(ctx);
                 pesan.setTitle("Perhatian");
-                pesan.setMessage("Anda memilihi anggota dengan nama " + holder.tvNama.getText().toString());
+                pesan.setMessage("Anda memilih anggota dengan nama " + anggota.getNama());
                 pesan.setCancelable(true);
 
                 pesan.setNegativeButton("Hapus", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        // Handle delete action
                     }
                 });
 
-                // action button ubah
                 pesan.setPositiveButton("Ubah", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent kirim = new Intent(ctx, UpdateAnggota.class);
-                        kirim.putExtra("xEmail", holder.tvEmail.getText().toString());
-                        kirim.putExtra("xNama", holder.tvNama.getText().toString());
-                        kirim.putExtra("xNpm", holder.tvNpm.getText().toString());
-                        kirim.putExtra("xProdi", holder.tvProdi.getText().toString());
-                        kirim.putExtra("xSabuk", holder.tvSabuk.getText().toString());
-                        kirim.putExtra("xTempat", holder.tvTempatLahir.getText().toString());
-                        kirim.putExtra("xTanggal", holder.tvTanggalLahir.getText().toString());
-                        kirim.putExtra("xTinggi", holder.tvTinggiBadan.getText().toString());
-                        kirim.putExtra("xBerat", holder.tvBeratBadan.getText().toString());
-                        kirim.putExtra("xNoWa", holder.tvNoWa.getText().toString());
+                        kirim.putExtra("xEmail", anggota.getEmail());
+                        kirim.putExtra("xNama", anggota.getNama());
+                        kirim.putExtra("xNpm", anggota.getNpm());
+                        kirim.putExtra("xProdi", anggota.getProdi());
+                        kirim.putExtra("xSabuk", anggota.getSabuk());
+                        kirim.putExtra("xTempat", anggota.getTempat());
+                        kirim.putExtra("xTanggal", anggota.getTanggal());
+                        kirim.putExtra("xTinggi", anggota.getTinggi());
+                        kirim.putExtra("xBerat", anggota.getBerat());
+                        kirim.putExtra("xNoWa", anggota.getNowa());
+
+                        ctx.startActivity(kirim);
                     }
                 });
+
                 pesan.show();
                 return false;
             }
         });
-
     }
-
 
     @Override
     public int getItemCount() {
@@ -126,23 +132,27 @@ public class Card extends RecyclerView.Adapter<Card.ClassViewHolder> {
         this.dataAnggota = data;
     }
 
+    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
+        this.onItemLongClickListener = onItemLongClickListener;
+    }
+
+    public interface OnItemLongClickListener {
+        void onLongClick(AnggotaModel anggota);
+
+        void onItemLongClick(View view, AnggotaModel anggotaModel, int position);
+    }
+
     public class ClassViewHolder extends RecyclerView.ViewHolder {
-        TextView tvEmail, tvNama, tvNpm, tvProdi, tvSabuk, tvTempatLahir, tvTanggalLahir, tvTinggiBadan, tvBeratBadan, tvNoWa;
+        TextView tvNama, tvNpm, tvProdi, tvSabuk;
         ImageView ivFoto;
 
         public ClassViewHolder(@NonNull View itemView) {
             super(itemView);
             ivFoto = itemView.findViewById(R.id.iv_foto);
-            tvEmail = itemView.findViewById(R.id.tv_email);
             tvNama = itemView.findViewById(R.id.tv_nama);
             tvNpm = itemView.findViewById(R.id.tv_npm);
             tvProdi = itemView.findViewById(R.id.tv_prodi);
             tvSabuk = itemView.findViewById(R.id.tv_sabuk);
-            tvTempatLahir = itemView.findViewById(R.id.tv_tempatLahir);
-            tvTanggalLahir = itemView.findViewById(R.id.tv_tanggalLahir);
-            tvTinggiBadan = itemView.findViewById(R.id.tv_tinggiBadan);
-            tvBeratBadan = itemView.findViewById(R.id.tv_beratBadan);
-            tvNoWa = itemView.findViewById(R.id.tv_noWhatsapp);
         }
     }
 }

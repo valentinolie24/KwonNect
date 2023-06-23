@@ -28,7 +28,7 @@ public interface APIService {
 
     @FormUrlEncoded
     @POST("anggota")
-    Call<ValueNoData> addAnggota(@Field("user_id") String user_id,
+    Call<ValueNoData> addAnggota(
                                  @Field("foto") String foto,
                                  @Field("email") String email,
                                  @Field("nama") String nama,
