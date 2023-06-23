@@ -61,33 +61,6 @@ public class MainActivity extends AppCompatActivity {
         tampilDataCard();
     }
 
-    private void deleteAnggota(String id) {
-        APIService api = Utilities.getRetrofit().create(APIService.class);
-        Call<ValueNoData> call = api.deleteAnggota(id);
-        call.enqueue(new Callback<ValueNoData>() {
-            @Override
-            public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {
-                if (response.code() == 200){
-                    int success = response.body().getSuccess();
-                    String message = response.body().getMessage();
-
-                    if (success == 1){
-                        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
-                        getAllAnggota();
-                    } else {
-                        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(MainActivity.this, "Response " + response.code(), Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ValueNoData> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     private int findPositionById(String id) {
         for (int i = 0; i < data.size(); i++) {
